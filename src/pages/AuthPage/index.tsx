@@ -14,7 +14,7 @@ import { AuthFields } from "./AuthFields";
 import { animateAuthForm } from "./helpers";
 
 export const AuthPage = () => {
-  const [isSignUp, setIsSignUp] = useState(false);
+  const [isRegister, setIsRegister] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   const animateRef = useRef<HTMLDivElement>(null);
@@ -24,7 +24,7 @@ export const AuthPage = () => {
   const { toast } = useToast();
 
   const form = useForm({
-    resolver: zodResolver(isSignUp ? SignupSchema : SigninSchema),
+    resolver: zodResolver(isRegister ? SignupSchema : SigninSchema),
     defaultValues: {
       email: "",
       password: "",
@@ -38,7 +38,7 @@ export const AuthPage = () => {
   }, [navigate]);
 
   const toggleAuth = () => {
-    setIsSignUp(!isSignUp);
+    setIsRegister(!isRegister);
     reset();
     animate();
   };
@@ -46,7 +46,7 @@ export const AuthPage = () => {
   const onSubmit = async (data: { email: string; password: string; confirmPassword?: string }) => {
     try {
       setIsLoading(true);
-      await (isSignUp ? signup(data) : signin(data));
+      await (isRegister ? signup(data) : signin(data));
 
       navigate("/profile");
     } catch (error) {
@@ -78,20 +78,20 @@ export const AuthPage = () => {
         <Card className="w-sm mx-auto shadow-lg flex flex-col gap-2">
           <form onSubmit={handleSubmit(onSubmit)}>
             <CardHeader>
-              <CardTitle className="text-lg font-semibold text-center">{isSignUp ? "Регистрация" : "Вход"}</CardTitle>
+              <CardTitle className="text-lg font-semibold text-center">{isRegister ? "Регистрация" : "Вход"}</CardTitle>
             </CardHeader>
             <CardContent className="overflow-hidden">
               <div className="space-y-4 transition-all ease-linear transform" ref={animateRef}>
-                <AuthFields form={form} isSignUp={isSignUp} />
+                <AuthFields form={form} isRegister={isRegister} />
 
                 <Button variant="outline" type="submit" className="w-full mb-0">
-                  {isLoading ? <Loader2 className="animate-spin w-5 h-5" /> : isSignUp ? "Создать аккаунт" : "Войти"}
+                  {isLoading ? <Loader2 className="animate-spin w-5 h-5" /> : isRegister ? "Создать аккаунт" : "Войти"}
                 </Button>
 
                 <div className="mt-4 text-center">
-                  <span className="dark:text-white">{isSignUp ? "Уже есть аккаунт?" : "Ещё нет аккаунта?"}</span>
+                  <span className="dark:text-white">{isRegister ? "Уже есть аккаунт?" : "Ещё нет аккаунта?"}</span>
                   <button type="button" onClick={toggleAuth} className="text-blue-500 ml-1">
-                    {isSignUp ? "Войти" : "Создать аккаунт"}
+                    {isRegister ? "Войти" : "Создать аккаунт"}
                   </button>
                 </div>
               </div>

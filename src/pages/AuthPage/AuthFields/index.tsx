@@ -3,7 +3,7 @@ import { FormControl, FormField, FormItem, FormLabel, FormMessage, Input } from 
 import { UseFormReturn } from "react-hook-form";
 
 interface Props {
-  isSignUp: boolean;
+  isRegister: boolean;
   form: UseFormReturn<{
     email: string;
     password: string;
@@ -11,7 +11,7 @@ interface Props {
   }>;
 }
 
-export const AuthFields = ({ form, isSignUp }: Props) => (
+export const AuthFields = ({ form, isRegister }: Props) => (
   <>
     <FormField
       control={form.control}
@@ -41,7 +41,7 @@ export const AuthFields = ({ form, isSignUp }: Props) => (
       )}
     />
 
-    {isSignUp && (
+    {isRegister && (
       <FormField
         control={form.control}
         name="confirmPassword"
