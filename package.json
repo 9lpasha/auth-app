@@ -1,6 +1,5 @@
 {
   "name": "auth-app",
-  "homepage": "https://9lpasha.github.io/auth-app",
   "private": true,
   "version": "0.0.0",
   "type": "module",
