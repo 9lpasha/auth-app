@@ -1,3 +1,4 @@
+/** Анимация при смене Регистрация/Вход */
 export const animateAuthForm = (div: HTMLDivElement) => {
   div.classList.add("duration-250");
   div.classList.add("translate-x-full", "opacity-0");
