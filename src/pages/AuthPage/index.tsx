@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Button, Form, useToast, Card, CardHeader, CardTitle, CardContent } from "components-shadcn";
-import { signin, signup } from "services";
+import { signin, signup } from "api";
 import { ErrorResponse } from "types";
 
 import { SigninSchema, SignupSchema } from "./constants";

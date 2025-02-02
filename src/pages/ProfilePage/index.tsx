@@ -2,7 +2,7 @@ import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
 
 import { Button, Card, CardContent, CardHeader, CardTitle, Input, Skeleton, useToast } from "components-shadcn";
-import { getProfile } from "services";
+import { getProfile } from "api";
 import { ErrorResponse } from "types";
 
 export const ProfilePage = () => {
