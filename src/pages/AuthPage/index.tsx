@@ -34,7 +34,7 @@ export const AuthPage = () => {
   const { handleSubmit, reset } = form;
 
   useEffect(() => {
-    if (localStorage.getItem("token")) navigate("/profile");
+    if (localStorage.getItem("token")) navigate("/?route=profile");
   }, [navigate]);
 
   const toggleAuth = () => {
@@ -48,7 +48,7 @@ export const AuthPage = () => {
       setIsLoading(true);
       await (isRegister ? signup(data) : signin(data));
 
-      navigate("/profile");
+      navigate("/?route=profile");
     } catch (error) {
       if (axios.isAxiosError<ErrorResponse>(error) && error.response) {
         toast({

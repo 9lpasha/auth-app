@@ -1,12 +1,19 @@
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { Route, BrowserRouter as Router, Routes, useSearchParams } from "react-router-dom";
 
 import { AuthPage, ProfilePage } from "pages";
 
-export const AppRouter = () => (
-  <Router basename={location.hostname === "localhost" ? "/" : "/auth-app"}>
-    <Routes>
-      <Route path="/" element={<AuthPage />} />
-      <Route path="/profile" element={<ProfilePage />} />
-    </Routes>
-  </Router>
-);
+const App = () => {
+  const [searchParams] = useSearchParams();
+
+  return searchParams.get("route") === "profile" ? <ProfilePage /> : <AuthPage />;
+};
+
+export const AppRouter = () => {
+  return (
+    <Router basename={location.hostname === "localhost" ? "/" : "/auth-app"}>
+      <Routes>
+        <Route path="/" element={<App />} />
+      </Routes>
+    </Router>
+  );
+};
