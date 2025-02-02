@@ -9,7 +9,7 @@ export default defineConfig(({ mode }) => {
   const isProduction = mode === "production";
 
   return {
-    base: isProduction ? "/auth-app/" : "/",
+    base: isProduction ? "/auth-app" : "/",
     // другие настройки для продакшн и разработки
     plugins: [react(), tailwindcss()],
     resolve: {
